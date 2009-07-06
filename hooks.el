@@ -1,7 +1,7 @@
 ;; hooks.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2009-06-09 16:07:28 pcurry>
+;; Time-stamp: <2009-07-06 14:21:18 pcurry>
 
 ;;; Description: Standard hooks for different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -16,7 +16,7 @@
             (if (srequire 'flymake) (flymake-mode 1))
             (local-set-key "\C-cc" 'compile)
             (local-set-key "\C-j" 'comment-indent-new-line)
-            (local-set-key [f5] 'make-based-tests)))
+            (local-set-key [f5] 'make-unit-tests)))
 
 (add-hook 'makefile-mode-hook
           (lambda ()

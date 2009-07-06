@@ -1,7 +1,7 @@
 ;; functions.el
 ;; Author: Paul Curry
 ;; Created: 2006-12-09
-;; Time-stamp: <2009-07-06 14:18:44 pcurry>
+;; Time-stamp: <2009-07-06 14:21:17 pcurry>
 
 ;;; Description: Helper function definitions.
 
@@ -51,7 +51,7 @@ Only call it on safe programs."
       (progn (call-process program nil nil nil) t)
     (error nil)))
 
-(defun make-based-tests ()
+(defun make-unit-tests ()
   "Run unit tests that are activated with 'make check'"
   (interactive)
   (compile "make check"))
