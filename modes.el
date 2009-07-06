@@ -1,10 +1,17 @@
-;; hooks.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2009-07-06 14:25:15 pcurry>
+;; Time-stamp: <2009-07-06 15:38:08 pcurry>
 
-;;; Description: Standard hooks for different modes.
+;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
+;; I use anonymous functions to avoid unnecessary naming.
+
+;;;; C/C++
+;; use c++ mode by default for .h files
+(add-to-list 'auto-mode-alist  '("\\.h\\'" . c++-mode))
+
+;; use c++ mode on template definition files
+(add-to-list 'auto-mode-alist  '("\\.def\\'" . c++-mode))
 
 (add-hook 'c-mode-common-hook
           (lambda ()
@@ -18,6 +25,8 @@
             (local-set-key "\C-j" 'comment-indent-new-line)
             (local-set-key [f5] 'make-unit-tests)))
 
+
+
 (add-hook 'makefile-mode-hook
           (lambda ()
             (local-set-key "\C-cc" 'compile)))
@@ -27,6 +36,12 @@
             (c-set-style "java")
             (c-toggle-hungry-state t)))
 
+;;;; Python
+;; Use the emacs 22 python-mode if possible.
+(unless (fboundp 'python-mode)
+  (autoload 'python-mode "python-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode)))
+
 (add-hook 'python-mode-hook
           (lambda ()
             (if (srequire 'cc-subword) (c-subword-mode 1))
@@ -34,17 +49,56 @@
                      (exec-in-path-p "pylint"))
                 (flymake-mode 1))))
 
+
+
 (add-hook 'cperl-mode-hook
           (lambda ()
             (cperl-set-style "PerlStyle")
             (local-set-key "\C-hp" 'cperl-perldoc)
             (if (srequire 'flymake) (flymake-mode 1))))
 
+;;;; OCaml
+;; clipped from append-tuareg.el
+(add-to-list 'auto-mode-alist  '("\\.ml\\w?" . tuareg-mode))
+(autoload 'tuareg-mode "tuareg" nil t)
+(autoload 'camldebug "camldebug-tuareg" nil t)
+
+(if (and (boundp 'window-system) window-system)
+    (when (string-match "Emacs" emacs-version)
+       	(if (not (and (boundp 'mule-x-win-initted) mule-x-win-initted))
+            (require 'sym-lock))
+       	(require 'font-lock)))
+;; end clip
+
+
+
+(autoload 'maude-mode "maude-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.maude\\'" . maude-mode))
+(setq maude-command "/usr/local/maude-intelDarwin/maude")
+
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             ;; for emacs source code
             (setq tab-width 8)
             (eldoc-mode 1)))
+
+;;; Web modes
+;; use nxml-mode if available, override magic data-specific setttings
+(load "~/.elisp/site-lisp/nxml-mode/rng-auto.el" t)
+(add-to-list 'auto-mode-alist
+             '("\\.\\(xml\\|xsl\\|rng\\|x?html\\)\\'" . nxml-mode))
+
+(autoload 'css-mode "css-mode-simple" nil t)
+(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
+
+(autoload 'javascript-mode "javascript" nil t)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
+
+(unless (fboundp 'php-mode)
+  (autoload 'php-mode "php-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode)))
+
+
 
 (add-hook 'text-mode-hook
           (lambda ()
