@@ -1,7 +1,7 @@
 ;; hooks.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2009-07-06 14:21:18 pcurry>
+;; Time-stamp: <2009-07-06 14:25:15 pcurry>
 
 ;;; Description: Standard hooks for different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -69,11 +69,6 @@
             (mapc (lambda (char)
                     (local-set-key char 'skeleton-pair-insert-maybe))
                   '("(" "[" "{"))))
-
-(add-hook 'deeds-mode-hook
-          (lambda ()
-            (longlines-mode 1)
-            (abbrev-mode 1)))
 
 (add-hook 'asm-mode-hook
           (lambda ()
