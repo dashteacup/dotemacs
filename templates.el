@@ -1,7 +1,7 @@
 ;; templates.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2007-11-07 18:46:15 pcurry>
+;; Time-stamp: <2009-07-06 15:47:17 pcurry>
 
 ;;; Description: Skeletons and related functions for auto-insert.
 
@@ -16,8 +16,7 @@
 
 (defun my-source-header ()
   "Return header string for a source file."
-  (concat (file-name-nondirectory buffer-file-name) "\n"
-          "Author: " (user-full-name) "\n"
+  (concat "Author: " (user-full-name) "\n"
           "Created: " (format-time-string "%Y-%m-%d") "\n"
           "Time-stamp: <>\n"))
 
