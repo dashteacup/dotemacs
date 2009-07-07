@@ -1,7 +1,7 @@
 ;; templates.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2009-07-07 13:38:24 pcurry>
+;; Time-stamp: <2009-07-07 13:51:45 pcurry>
 
 ;;; Description: Skeletons and related functions for auto-insert.
 
@@ -63,12 +63,10 @@ that comment at the the beginning of every line."
 (setq auto-insert-alist
       '((("\\.\\([Hh]\\|hh\\|hpp\\)\\'" . "C / C++ header")
          nil
-         '(setq v1 (upcase (concat
-                            (car
-                             (split-string (file-name-nondirectory buffer-file-name) "\\."))
-                            "_"
-                            (cadr
-                             (split-string (file-name-nondirectory buffer-file-name) "\\.")))))
+         '(setq v2
+                (split-string (file-name-nondirectory buffer-file-name) "\\."))
+         '(setq v1
+                (upcase (concat (car v2) "_" (car (last v2)))))
          "/* " (my-source-header)
          '(indent-region (point-min) (point) nil)
          "*/" \n \n
