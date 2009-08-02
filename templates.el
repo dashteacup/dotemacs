@@ -1,7 +1,7 @@
 ;; templates.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2009-07-07 13:51:45 pcurry>
+;; Time-stamp: <2009-07-07 13:55:37 pcurry>
 
 ;;; Description: Skeletons and related functions for auto-insert.
 

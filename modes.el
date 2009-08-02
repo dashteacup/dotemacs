@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2009-07-06 15:38:08 pcurry>
+;; Time-stamp: <2009-08-02 17:21:47 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -87,12 +87,6 @@
 (load "~/.elisp/site-lisp/nxml-mode/rng-auto.el" t)
 (add-to-list 'auto-mode-alist
              '("\\.\\(xml\\|xsl\\|rng\\|x?html\\)\\'" . nxml-mode))
-
-(autoload 'css-mode "css-mode-simple" nil t)
-(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
-
-(autoload 'javascript-mode "javascript" nil t)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
 
 (unless (fboundp 'php-mode)
   (autoload 'php-mode "php-mode" nil t)
