@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2009-06-09 16:08:25 pcurry>
+;; Time-stamp: <2010-08-26 13:19:29 pcurry>
 
 ;;; Description: Global key bindings
 
@@ -13,7 +13,7 @@
 
 (global-set-key (kbd "C-<return>") 'complete-tag)
 
-(global-set-key [?\C-'] 'dabbrev-expand)
+(global-set-key [?\C-\;] 'dabbrev-expand)
 
 (global-set-key "\C-cl" 'count-lines-region)
 

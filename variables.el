@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2008-08-21 10:42:09 pcurry>
+;; Time-stamp: <2013-05-16 15:26:20 pcurry>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -13,7 +13,7 @@
 (setq x-select-enable-clipboard t)
 
 (when (featurep 'tool-bar)
-  (tool-bar-mode nil))
+  (tool-bar-mode -1))
 
 (setq frame-title-format "%b")
 
@@ -32,7 +32,7 @@
 ;; automatically adds a newline to the end of a text file
 (setq require-final-newline t)
 
-(setq user-mail-address "pcurry2@uiuc.edu")
+(setq user-mail-address "pcurry2@illinois.edu")
 
 (setq gnus-select-method '(nntp "news.cs.uiuc.edu"))
 
@@ -55,7 +55,7 @@
 (put 'dired-find-alternate-file 'disabled nil)
 
 ;; Scrolling with more context lines
-(setq next-screen-context-lines 3)
+(setq next-screen-context-lines 2)
 
 ;; Make dabbrev-expand work correctly with StudlyCaps
 (setq dabbrev-case-replace nil)
@@ -65,8 +65,11 @@
 (setq dired-listing-switches "-l")
 
 ;; use aspell instead of ispell
-(unless (string-match "cygwin" (emacs-version))
-  (setq-default ispell-program-name "aspell"))
+(unless (or (string-match "cygwin" (emacs-version))
+            ;; 2.0+ uses built in mac os spellcheck
+            (featurep 'aquamacs))
+  (if (exec-in-path-p "aspell")
+      (setq-default ispell-program-name "aspell")))
 
 (show-paren-mode t)
 

@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2009-08-03 11:42:14 pcurry>
+;; Time-stamp: <2013-06-28 18:49:05 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -84,7 +84,7 @@
 
 ;;; Web modes
 ;; use nxml-mode if available, override magic data-specific setttings
-(load "~/.elisp/site-lisp/nxml-mode/rng-auto.el" t)
+;;(load "~/.elisp/site-lisp/nxml-mode/rng-auto.el" t)
 (add-to-list 'auto-mode-alist
              '("\\.\\(xml\\|xsl\\|rng\\|x?html\\)\\'" . nxml-mode))
 
@@ -92,13 +92,16 @@
   (autoload 'php-mode "php-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode)))
 
-
-
+;; default doesn't work well for me
+(if (featurep 'aquamacs) (setq text-mode-hook nil))
 (add-hook 'text-mode-hook
           (lambda ()
-            (flyspell-mode 1)
-            (if (and (srequire 'longlines) (longlines-heuristic))
-                (longlines-mode 1))))
+            (when (featurep 'aquamacs)
+              (smart-spacing-mode 1)
+              ;; Need to update my console version of emacs so I can use this.
+              (visual-line-mode 1)
+              ;; Need to set up ispell before I can use this in a terminal.
+              (flyspell-mode 1))))
 
 ;; auctex
 (add-hook 'LaTeX-mode-hook
@@ -187,6 +190,7 @@
                       temp-file
                       (file-name-directory buffer-file-name))))
     (list "js" (list "-s" local-file))))
+
 (defun flymake-js-load ()
   (interactive)
   (defadvice flymake-post-syntax-check (before flymake-force-check-was-interrupted)
