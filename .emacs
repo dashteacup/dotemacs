@@ -1,8 +1,9 @@
 ;;;; Paul's .emacs file
 ;; Originally written sometime before September 7, 2003
-;; Time-stamp: <2013-07-01 11:11:24 pcurry>
+;; Time-stamp: <2013-07-01 19:03:52 pcurry>
 
 ;;; Note: This should be in the user's home directory (~).
+;;; Or you could just make ~/.emacs a symbolic link to this file.
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
