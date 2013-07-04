@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2013-06-28 18:49:05 pcurry>
+;; Time-stamp: <2013-07-03 23:35:32 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -19,13 +19,11 @@
             (setq c-tab-always-indent nil)
             (c-toggle-hungry-state t)
             (setq c-block-comment-prefix "")
-            (if (srequire 'cc-subword) (c-subword-mode 1))
+            (if (srequire 'subword) (subword-mode 1))
             (if (srequire 'flymake) (flymake-mode 1))
             (local-set-key "\C-cc" 'compile)
             (local-set-key "\C-j" 'comment-indent-new-line)
             (local-set-key [f5] 'make-unit-tests)))
-
-
 
 (add-hook 'makefile-mode-hook
           (lambda ()
@@ -36,20 +34,12 @@
             (c-set-style "java")
             (c-toggle-hungry-state t)))
 
-;;;; Python
-;; Use the emacs 22 python-mode if possible.
-(unless (fboundp 'python-mode)
-  (autoload 'python-mode "python-mode" nil t)
-  (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode)))
-
 (add-hook 'python-mode-hook
           (lambda ()
-            (if (srequire 'cc-subword) (c-subword-mode 1))
+            (if (srequire 'subword) (subword-mode 1))
             (if (and (srequire 'flymake)
                      (exec-in-path-p "pylint"))
                 (flymake-mode 1))))
-
-
 
 (add-hook 'cperl-mode-hook
           (lambda ()
@@ -57,23 +47,6 @@
             (local-set-key "\C-hp" 'cperl-perldoc)
             (if (srequire 'flymake) (flymake-mode 1))))
 
-;;;; OCaml
-;; clipped from append-tuareg.el
-(add-to-list 'auto-mode-alist  '("\\.ml\\w?" . tuareg-mode))
-(autoload 'tuareg-mode "tuareg" nil t)
-(autoload 'camldebug "camldebug-tuareg" nil t)
-
-(if (and (boundp 'window-system) window-system)
-    (when (string-match "Emacs" emacs-version)
-       	(if (not (and (boundp 'mule-x-win-initted) mule-x-win-initted))
-            (require 'sym-lock))
-       	(require 'font-lock)))
-;; end clip
-
-
-
-(autoload 'maude-mode "maude-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.maude\\'" . maude-mode))
 (setq maude-command "/usr/local/maude-intelDarwin/maude")
 
 (add-hook 'emacs-lisp-mode-hook
@@ -81,16 +54,6 @@
             ;; for emacs source code
             (setq tab-width 8)
             (eldoc-mode 1)))
-
-;;; Web modes
-;; use nxml-mode if available, override magic data-specific setttings
-;;(load "~/.elisp/site-lisp/nxml-mode/rng-auto.el" t)
-(add-to-list 'auto-mode-alist
-             '("\\.\\(xml\\|xsl\\|rng\\|x?html\\)\\'" . nxml-mode))
-
-(unless (fboundp 'php-mode)
-  (autoload 'php-mode "php-mode" nil t)
-  (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode)))
 
 ;; default doesn't work well for me
 (if (featurep 'aquamacs) (setq text-mode-hook nil))
@@ -170,7 +133,6 @@
 
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.pm\\'" flymake-perl-init)))
-
 
 ;; flymake for javascript mode
 (defconst flymake-allowed-js-file-name-masks '(("\\.json$" flymake-js-init)
