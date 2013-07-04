@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2013-05-16 15:26:20 pcurry>
+;; Time-stamp: <2013-07-04 14:46:16 pcurry>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -31,6 +31,10 @@
 
 ;; automatically adds a newline to the end of a text file
 (setq require-final-newline t)
+
+;; Remember your place in files where that feature is useful.
+(setq-default save-place t)
+(srequire 'saveplace)
 
 (setq user-mail-address "pcurry2@illinois.edu")
 
