@@ -1,6 +1,6 @@
 ;;;; Paul's .emacs file
 ;; Originally written sometime before September 7, 2003
-;; Time-stamp: <2013-07-01 19:03:52 pcurry>
+;; Time-stamp: <2013-07-03 18:48:03 pcurry>
 
 ;;; Note: This should be in the user's home directory (~).
 ;;; Or you could just make ~/.emacs a symbolic link to this file.
@@ -21,13 +21,20 @@
   ;; If there is more than one, they won't work right.
  )
 
-;;;; My lisp files directories
+;;; My lisp files directories
 (add-to-list 'load-path "~/.elisp/")
 
-;;;; Let's just try out the default install for now
-;; (add-to-list 'load-path "~/.elisp/site-lisp")
-;; (add-to-list 'load-path "~/.elisp/site-lisp/nxml-mode")
+;;; My user installed packages.
+(add-to-list 'load-path "~/.elisp/site-lisp")
 
+;;; Autoloads of user installed packages.
+(condition-case nil
+    (load-file "~/.elisp/site-lisp/loaddefs.el")
+  (error (load-file "~/.elisp/site-lisp/update-autoloads.el")
+         (update-autoloads-for-packages)
+         (load-file "~/.elisp/site-lisp/loaddefs.el")))
+
+;;; Load all my custom lisp files.
 (mapc 'load-library
       '("functions"
         "variables"
