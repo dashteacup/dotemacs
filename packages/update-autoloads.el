@@ -1,17 +1,17 @@
 ;; Author: Paul Curry
 ;; Created: 2013-07-03
-;; Time-stamp: <2013-07-04 14:22:14 pcurry>
+;; Time-stamp: <2013-07-04 22:18:53 pcurry>
 
 ;;; Description: Make magic autoloads work for user installed .el files.
 
 ;;; Installation:
-;; Place this file in your user installed package directory. For me it's
+;; Place this file in your user installed package directory.  For me it's
 ;; ~/.emacs.d/packages. Run the `update-autoloads-for-packages' function to
 ;; generate a loaddefs.el in your package directory. Then, load the
-;; loaddefs.el from you .emacs file.  I use
+;; loaddefs.el from your .emacs file. I use
 ;; (load-file "~/.emacs.d/packages/loaddefs.el")
 
-;; Modified from: http://stackoverflow.com/questions/4189159/emacs23-elisp-how-to-properly-autoload-this-library
+;; Inspired by: http://stackoverflow.com/questions/4189159/emacs23-elisp-how-to-properly-autoload-this-library
 
 ;;;###autoload
 (defun update-autoloads-for-packages ()
