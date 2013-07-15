@@ -1,9 +1,9 @@
-;;;; Paul's .emacs file
+;;;; Paul's init.el file
 ;; Originally written sometime before September 7, 2003
-;; Time-stamp: <2013-07-04 22:22:54 pcurry>
+;; Time-stamp: <2013-07-14 22:43:09 pcurry>
 
-;;; Note: This should be in the user's home directory (~).
-;;; Or you could just make ~/.emacs a symbolic link to this file.
+;;; This used to be my .emacs file, but Emacs 22 and up allows you to
+;;; use ~/.emacs.d/init.el as your config file, so it got a name change.
 
 ;; These paths are constants.
 (let* ((elisp-dir "~/.emacs.d/")
