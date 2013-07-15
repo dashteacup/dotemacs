@@ -1,12 +1,11 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2013-07-04 14:46:16 pcurry>
+;; Time-stamp: <2013-07-14 22:16:48 pcurry>
 
 ;;; Description: Customization of various emacs variable settings.
 
-(when (boundp 'mac-command-modifier)
-  (setq mac-command-modifier 'meta))
+(setq mac-command-modifier 'meta)
 
 ;; Needed for OS X clipboard compatibility. May break other systems;
 ;; modify if it does.
