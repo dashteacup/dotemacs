@@ -1,7 +1,7 @@
 ;; functions.el
 ;; Author: Paul Curry
 ;; Created: 2006-12-09
-;; Time-stamp: <2009-07-06 14:21:17 pcurry>
+;; Time-stamp: <2013-09-13 23:05:02 pcurry>
 
 ;;; Description: Helper function definitions.
 
@@ -24,6 +24,17 @@ cyclic order.  See `other-window'."
   (kill-buffer nil)
   (other-window -1))
 
+(defun revert-buffer-without-query ()
+  "Revert buffer without confirmation.
+Replace current buffer text with the text of the file on disk.
+This is like `revert-buffer' but without asking whether you
+really want to reload the file. This is handy if you are swapping
+between using emacs and another tool (like an IDE) to edit a
+file."
+  (interactive)
+  (revert-buffer t t))
+
+;; No longer necessary in Aquamacs, unsure elsewhere.
 (defun longlines-heuristic ()
   "Determine if the buffer contains long lines.
 Return t if any of the first 100 lines are longer than 80

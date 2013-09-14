@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2013-07-03 23:35:32 pcurry>
+;; Time-stamp: <2013-09-13 23:18:39 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -23,7 +23,7 @@
             (if (srequire 'flymake) (flymake-mode 1))
             (local-set-key "\C-cc" 'compile)
             (local-set-key "\C-j" 'comment-indent-new-line)
-            (local-set-key [f5] 'make-unit-tests)))
+            (local-set-key [f7] 'make-unit-tests)))
 
 (add-hook 'makefile-mode-hook
           (lambda ()

@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2010-08-26 13:19:29 pcurry>
+;; Time-stamp: <2013-09-13 23:06:42 pcurry>
 
 ;;; Description: Global key bindings
 
@@ -19,6 +19,8 @@
 
 ;; read-only viewing mode
 (global-set-key "\C-cv" 'view-mode)
+
+(global-set-key [f5] 'revert-buffer-without-query)
 
 (global-set-key [f6] 'delete-other-windows)
 
