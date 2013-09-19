@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2013-09-13 23:18:39 pcurry>
+;; Time-stamp: <2013-09-18 22:47:34 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -12,6 +12,9 @@
 
 ;; use c++ mode on template definition files
 (add-to-list 'auto-mode-alist  '("\\.def\\'" . c++-mode))
+
+;; Use c++ for flex (aka lex) files.
+(add-to-list 'auto-mode-alist '("\\.flex\\'" . c++-mode))
 
 (add-hook 'c-mode-common-hook
           (lambda ()
