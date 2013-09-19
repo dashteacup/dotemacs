@@ -1,13 +1,18 @@
 dotemacs
 =======
 
-My personal emacs configuration files.
+My personal Emacs configuration files.
+
+I don't use Emacs as much these days given the improvement in modern
+IDE's capabilities, but it's still my preferred tool when I'm going to
+be shuffling around a lot of text. Or when a programming language has
+poor IDE support.
 
 These files are in version control primarily for my own benefit, but
 anyone may use them if they wish.  I've learned many things by reading
 other people's `.emacs` files.  I didn't worry much about portability,
 so simply dropping these files in place may not work for you without
-manual editing.  If you want a ready-to-go emacs setup you might want
+manual editing.  If you want a ready-to-go Emacs setup you might want
 to look at something like the
 [emacs-starter-kit](https://github.com/technomancy/emacs-starter-kit)
 instead.
