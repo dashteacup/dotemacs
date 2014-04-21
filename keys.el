@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2013-09-13 23:06:42 pcurry>
+;; Time-stamp: <2014-03-29 14:17:46 pcurry>
 
 ;;; Description: Global key bindings
 
@@ -11,7 +11,7 @@
 
 (global-set-key "\C-cr" 'comment-region)
 
-(global-set-key (kbd "C-<return>") 'complete-tag)
+;(global-set-key (kbd "C-<return>") 'complete-tag)
 
 (global-set-key [?\C-\;] 'dabbrev-expand)
 
