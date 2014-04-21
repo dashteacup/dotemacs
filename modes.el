@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2013-09-18 22:47:34 pcurry>
+;; Time-stamp: <2014-04-20 21:09:49 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -15,6 +15,9 @@
 
 ;; Use c++ for flex (aka lex) files.
 (add-to-list 'auto-mode-alist '("\\.flex\\'" . c++-mode))
+
+;; Use objective-c for .m files
+(add-to-list 'auto-mode-alist '("\\.m$" . objc-mode))
 
 (add-hook 'c-mode-common-hook
           (lambda ()
