@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2013-07-14 22:16:48 pcurry>
+;; Time-stamp: <2015-06-12 11:34:53 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -46,6 +46,10 @@
 
 ;; put backups in one place
 (setq backup-directory-alist '(("." . "~/.emacs_backups")))
+
+(unless (featurep 'aquamacs)
+  (setq auto-save-file-name-transforms
+        `((".*" "~/.emacs.d/auto-save-list/" t))))
 
 ;; use y/n instead of yes-or-no confirmation
 (defalias 'yes-or-no-p 'y-or-n-p)
