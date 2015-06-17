@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2014-04-20 21:09:49 pcurry>
+;; Time-stamp: <2015-06-12 11:12:09 currypx>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -18,6 +18,9 @@
 
 ;; Use objective-c for .m files
 (add-to-list 'auto-mode-alist '("\\.m$" . objc-mode))
+
+;; Use tcl-mode for .tk files
+(add-to-list 'auto-mode-alist '("\\.tk\\'" . tcl-mode))
 
 (add-hook 'c-mode-common-hook
           (lambda ()
