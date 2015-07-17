@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-07-08 12:19:25 currypx>
+;; Time-stamp: <2015-07-17 14:38:13 currypx>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -110,6 +110,16 @@
 
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
+
+;;; Copied from: http://www.emacswiki.org/emacs/EmacsClient#toc36
+;; Use C-x k to properly kill an emacsclient.
+(add-hook 'server-switch-hook
+          (lambda ()
+            (when (current-local-map)
+              (use-local-map (copy-keymap (current-local-map))))
+            (when server-buffer-clients
+              (local-set-key (kbd "C-x k") 'server-edit))))
+;;; End Copy
 
 (add-hook 'help-mode-hook
           (lambda ()
