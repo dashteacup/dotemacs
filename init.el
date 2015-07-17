@@ -1,6 +1,6 @@
 ;;;; Paul's init.el file
 ;; Originally written sometime before September 7, 2003
-;; Time-stamp: <2015-06-17 13:44:59 currypx>
+;; Time-stamp: <2015-07-17 10:24:21 currypx>
 
 ;;; This used to be my .emacs file, but Emacs 22 and up allows you to
 ;;; use ~/.emacs.d/init.el as your config file, so it got a name change.
@@ -18,11 +18,10 @@
   (add-to-list 'load-path package-dir)
 
   ;; Autoloads of user installed packages.
-  (when (featurep 'aquamacs)
-    (unless (file-exists-p loaddefs)
-      (load-file autoloader)
-      (update-autoloads-for-packages))
-    (load-file loaddefs)))
+  (unless (file-exists-p loaddefs)
+    (load-file autoloader)
+    (update-autoloads-for-packages))
+  (load-file loaddefs))
 
 ;;; Load all my custom lisp files.
 (mapc 'load-library
