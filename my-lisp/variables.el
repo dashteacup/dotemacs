@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-06-12 11:34:53 currypx>
+;; Time-stamp: <2015-07-17 10:30:08 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -21,6 +21,12 @@
   (auto-image-file-mode t))
 
 (setq default-major-mode 'text-mode)
+
+;; Use the smarter ws-trim-mode when it exists instead of
+;; delete-trailing-whitespace.
+(when (srequire 'ws-trim)
+  (global-ws-trim-mode t)
+  (set-default 'ws-trim-level 1))
 
 ;; File beginning based mode selection gets confused too easily.
 (setq magic-mode-alist nil)
@@ -53,6 +59,15 @@
 
 ;; use y/n instead of yes-or-no confirmation
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Sentence end commands will work with sentences that end with a single
+;; space.
+(setq sentence-end-double-space nil)
+
+;; Use ido mode for switching between buffers and files.
+(ido-mode 1)
+(when (srequire 'ido-vertical-mode)
+  (ido-vertical-mode 1))
 
 ;;; Enable disabled commands
 (put 'erase-buffer 'disabled nil)
@@ -102,4 +117,3 @@
 (setq auto-insert t)
 (setq auto-insert-query nil)
 (setq auto-insert-directory "~/.insert/")
-
