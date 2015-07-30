@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-07-17 14:38:13 currypx>
+;; Time-stamp: <2015-07-30 12:31:22 currypx>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -71,7 +71,8 @@
             (when (featurep 'aquamacs)
               (smart-spacing-mode 1)
               ;; Need to update my console version of emacs so I can use this.
-              (visual-line-mode 1)
+              (visual-line-mode 1))
+            (when (srequire 'flyspell)
               ;; Need to set up ispell before I can use this in a terminal.
               (flyspell-mode 1))))
 
