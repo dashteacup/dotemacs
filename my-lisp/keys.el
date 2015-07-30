@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2014-03-29 14:17:46 pcurry>
+;; Time-stamp: <2015-07-30 12:09:04 currypx>
 
 ;;; Description: Global key bindings
 
@@ -11,14 +11,14 @@
 
 (global-set-key "\C-cr" 'comment-region)
 
-;(global-set-key (kbd "C-<return>") 'complete-tag)
-
-(global-set-key [?\C-\;] 'dabbrev-expand)
-
 (global-set-key "\C-cl" 'count-lines-region)
 
 ;; read-only viewing mode
 (global-set-key "\C-cv" 'view-mode)
+
+;(global-set-key (kbd "C-<return>") 'complete-tag)
+
+(global-set-key [?\C-\;] 'dabbrev-expand)
 
 (global-set-key [f5] 'revert-buffer-without-query)
 
