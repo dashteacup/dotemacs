@@ -16,6 +16,8 @@
 ;; read-only viewing mode
 (global-set-key "\C-cv" 'view-mode)
 
+(global-set-key "\M-gf" 'find-file-at-point)
+
 ;(global-set-key (kbd "C-<return>") 'complete-tag)
 
 (global-set-key [?\C-\;] 'dabbrev-expand)
