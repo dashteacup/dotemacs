@@ -110,9 +110,13 @@
 
 (setq transient-mark-mode t)
 
-(setq undo-limit 50000)
+(let ((ulimit 50000))
+  (when (< undo-limit ulimit)
+    (setq undo-limit ulimit)))
 
-(setq undo-strong-limit 70000)
+(let ((uslimit 70000))
+  (when (< undo-strong-limit uslimit)
+    (setq undo-strong-limit uslimit)))
 
 (auto-insert-mode)
 (setq auto-insert t)
