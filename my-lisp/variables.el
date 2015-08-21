@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-07-17 10:30:08 currypx>
+;; Time-stamp: <2015-08-07 17:59:44 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -26,7 +26,7 @@
 ;; delete-trailing-whitespace.
 (when (srequire 'ws-trim)
   (global-ws-trim-mode t)
-  (set-default 'ws-trim-level 1))
+  (set-default 'ws-trim-level 0))
 
 ;; File beginning based mode selection gets confused too easily.
 (setq magic-mode-alist nil)
