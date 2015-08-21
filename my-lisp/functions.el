@@ -1,7 +1,7 @@
 ;; functions.el
 ;; Author: Paul Curry
 ;; Created: 2006-12-09
-;; Time-stamp: <2015-07-14 13:58:18 currypx>
+;; Time-stamp: <2015-08-21 16:59:29 currypx>
 
 ;;; Description: Helper function definitions.
 
@@ -119,10 +119,12 @@ Return feature if feature can be loaded, nil otherwise."
                                           temporary-file-directory)))
 ;;; end swipe
 
-(defadvice just-one-space (before two-spaces-after-sentence
-                                  nil
-                                  activate)
-  "Delete all but two spaces if at the start of a sentence."
-  (if (and (looking-back (sentence-end))
-           (ad-get-arg 0))
-      (ad-set-arg 0 2)))
+;;; Commented out because I've been using a single space between sentences
+;;; lately.
+;; (defadvice just-one-space (before two-spaces-after-sentence
+;;                                   nil
+;;                                   activate)
+;;   "Delete all but two spaces if at the start of a sentence."
+;;   (if (and (looking-back (sentence-end))
+;;            (ad-get-arg 0))
+;;       (ad-set-arg 0 2)))
