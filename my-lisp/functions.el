@@ -1,7 +1,7 @@
 ;; functions.el
 ;; Author: Paul Curry
 ;; Created: 2006-12-09
-;; Time-stamp: <2013-09-13 23:05:02 pcurry>
+;; Time-stamp: <2015-07-14 13:58:18 currypx>
 
 ;;; Description: Helper function definitions.
 
@@ -109,6 +109,15 @@ Return feature if feature can be loaded, nil otherwise."
   (let ((dir (current-buffer)))
     ad-do-it
     (kill-buffer dir)))
+
+;;; Code is swiped from: https://snarfed.org/dotfiles/.emacs
+;; VC backup files are different from normal backup files. they're used e.g.
+;; when you open an old revision of a file (like from *vc-change-log*). they're
+;; written to the current dir by default. put them in /tmp instead.
+(defadvice vc-version-backup-file-name (after use-tmp-dir activate)
+  (setq ad-return-value (expand-file-name (file-name-nondirectory ad-return-value)
+                                          temporary-file-directory)))
+;;; end swipe
 
 (defadvice just-one-space (before two-spaces-after-sentence
                                   nil
