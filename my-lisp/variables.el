@@ -67,7 +67,8 @@
 ;; Use ido mode for switching between buffers and files.
 (ido-mode 1)
 (when (srequire 'ido-vertical-mode)
-  (ido-vertical-mode 1))
+  (ido-vertical-mode 1)
+  (setq ido-vertical-define-keys 'C-n-C-p-up-down-left-right))
 
 ;;; Enable disabled commands
 (put 'erase-buffer 'disabled nil)
