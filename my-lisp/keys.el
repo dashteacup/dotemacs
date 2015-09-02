@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-09-02 14:58:22 currypx>
+;; Time-stamp: <2015-09-02 15:26:22 currypx>
 
 ;;; Description: Global key bindings
 
@@ -38,5 +38,9 @@
 (define-key help-map "M" 'man)
 
 (when (srequire 'help-mode)
+  (define-key help-mode-map "o" 'other-window)
   (define-key help-mode-map "n" 'next-line)
-  (define-key help-mode-map "p" 'previous-line))
+  (define-key help-mode-map "p" 'previous-line)
+  ;; vim-ish line movement (slightly easier to type)
+  (define-key help-mode-map "j" 'next-line)
+  (define-key help-mode-map "k" 'previous-line))
