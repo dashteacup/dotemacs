@@ -1,7 +1,7 @@
 ;; functions.el
 ;; Author: Paul Curry
 ;; Created: 2006-12-09
-;; Time-stamp: <2015-08-21 16:59:29 currypx>
+;; Time-stamp: <2015-09-02 15:02:52 currypx>
 
 ;;; Description: Helper function definitions.
 
@@ -93,11 +93,11 @@ TIME has the same format as in `format-time-string'.
 The ISO format is YYYY-MM-DD."
   (format-time-string "%Y-%m-%d" (or time (current-time))))
 
-(defmacro srequire (feature)
+(defun srequire (feature)
   "Silent `require'.  Shorthand for (require feature nil t).
 Requires feature while surpressing error messages.
 Return feature if feature can be loaded, nil otherwise."
-  `(require ,feature nil t))
+  (require feature nil t))
 
 
 ;;; Advice for existing functions
