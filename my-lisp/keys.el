@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-07-30 12:09:04 currypx>
+;; Time-stamp: <2015-09-02 14:58:22 currypx>
 
 ;;; Description: Global key bindings
 
@@ -36,3 +36,7 @@
 (define-key ctl-x-map "k" 'kill-this-buffer)
 
 (define-key help-map "M" 'man)
+
+(when (srequire 'help-mode)
+  (define-key help-mode-map "n" 'next-line)
+  (define-key help-mode-map "p" 'previous-line))
