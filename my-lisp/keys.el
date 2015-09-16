@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-09-02 15:26:22 currypx>
+;; Time-stamp: <2015-09-16 10:43:36 currypx>
 
 ;;; Description: Global key bindings
 
@@ -44,3 +44,14 @@
   ;; vim-ish line movement (slightly easier to type)
   (define-key help-mode-map "j" 'next-line)
   (define-key help-mode-map "k" 'previous-line))
+
+(define-key view-mode-map "n" 'next-line)
+(define-key view-mode-map "p" 'previous-line)
+(define-key view-mode-map "j" 'next-line)
+(define-key view-mode-map "k" 'previous-line)
+
+(define-key messages-buffer-mode-map "o" 'other-window)
+(define-key messages-buffer-mode-map "n" 'next-line)
+(define-key messages-buffer-mode-map "p" 'previous-line)
+(define-key messages-buffer-mode-map "j" 'next-line)
+(define-key messages-buffer-mode-map "k" 'previous-line)
