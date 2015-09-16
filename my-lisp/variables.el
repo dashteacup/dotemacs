@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-08-07 17:59:44 currypx>
+;; Time-stamp: <2015-09-16 11:18:03 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -40,6 +40,12 @@
 ;; Remember your place in files where that feature is useful.
 (setq-default save-place t)
 (srequire 'saveplace)
+
+;; I use fboundp because the desktop feature exists in emacs 21 but
+;; desktop-save-mode doesn't.
+(when (fboundp 'desktop-save-mode)
+  (desktop-save-mode 1)
+  (setq desktop-save t))
 
 (setq user-mail-address "pcurry2@illinois.edu")
 
