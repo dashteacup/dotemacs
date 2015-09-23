@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-09-16 10:46:19 currypx>
+;; Time-stamp: <2015-09-16 12:02:59 currypx>
 
 ;;; Description: Global key bindings
 
@@ -15,6 +15,9 @@
 
 ;; read-only viewing mode
 (global-set-key "\C-cv" 'view-mode)
+
+(global-set-key "\M-n" 'scroll-up-command)
+(global-set-key "\M-p" 'scroll-down-command)
 
 (global-set-key "\M-gf" 'find-file-at-point)
 
