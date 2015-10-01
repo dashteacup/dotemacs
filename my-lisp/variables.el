@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-10-01 12:16:57 currypx>
+;; Time-stamp: <2015-10-01 12:32:59 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -38,8 +38,10 @@
 (setq require-final-newline t)
 
 ;; Remember your place in files where that feature is useful.
-(setq-default save-place t)
-(srequire 'saveplace)
+(when (srequire 'saveplace)
+  (setq-default save-place t)
+  ;; Don't clutter my home dir with a ~/.emacs-places file
+  (setq save-place-file "~/.emacs.d/saved-places"))
 
 ;; I use fboundp because the desktop feature exists in emacs 21 but
 ;; desktop-save-mode doesn't.
@@ -62,9 +64,6 @@
 (unless (featurep 'aquamacs)
   (setq auto-save-file-name-transforms
         `((".*" "~/.emacs.d/auto-save-list/" t))))
-
-;; Don't clutter my home dir with a ~/.emacs-places file
-(setq save-place-file "~/.emacs.d/saved-places")
 
 ;; use y/n instead of yes-or-no confirmation
 (defalias 'yes-or-no-p 'y-or-n-p)
