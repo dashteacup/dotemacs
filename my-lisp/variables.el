@@ -92,6 +92,9 @@
 (setq dabbrev-case-replace nil)
 (setq dabbrev-case-fold-search nil)
 
+(when (srequire 'subword)
+  (global-subword-mode 1))
+
 ;; dired shouldn't show hidden files
 (setq dired-listing-switches "-l")
 
