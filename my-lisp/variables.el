@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-10-01 12:06:27 currypx>
+;; Time-stamp: <2015-10-01 12:16:57 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -62,6 +62,9 @@
 (unless (featurep 'aquamacs)
   (setq auto-save-file-name-transforms
         `((".*" "~/.emacs.d/auto-save-list/" t))))
+
+;; Don't clutter my home dir with a ~/.emacs-places file
+(setq save-place-file "~/.emacs.d/saved-places")
 
 ;; use y/n instead of yes-or-no confirmation
 (defalias 'yes-or-no-p 'y-or-n-p)

@@ -8,3 +8,4 @@ packages/
 .emacs.desktop*
 backups/
 viper
+saved-places
