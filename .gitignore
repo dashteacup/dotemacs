@@ -6,3 +6,5 @@ elpa/
 eshell/
 packages/
 .emacs.desktop*
+backups/
+viper

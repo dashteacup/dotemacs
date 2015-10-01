@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-09-16 11:18:03 currypx>
+;; Time-stamp: <2015-10-01 12:06:27 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -57,7 +57,7 @@
 (setq visible-bell t)
 
 ;; put backups in one place
-(setq backup-directory-alist '(("." . "~/.emacs_backups")))
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups/")))
 
 (unless (featurep 'aquamacs)
   (setq auto-save-file-name-transforms
