@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-07-30 12:31:22 currypx>
+;; Time-stamp: <2015-09-18 12:56:30 currypx>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -53,6 +53,8 @@
 (add-hook 'cperl-mode-hook
           (lambda ()
             (cperl-set-style "PerlStyle")
+            ;; Hide the stupid trailing whitespace underline.
+            (setq cperl-invalid-face nil)
             (local-set-key "\C-hp" 'cperl-perldoc)
             (if (srequire 'flymake) (flymake-mode 1))))
 
