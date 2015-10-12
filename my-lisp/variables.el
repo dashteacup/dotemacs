@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-10-01 12:32:59 currypx>
+;; Time-stamp: <2015-10-12 16:06:38 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -48,6 +48,9 @@
 (when (fboundp 'desktop-save-mode)
   (desktop-save-mode 1)
   (setq desktop-save t))
+
+;; Reload file when it changes on disk
+(global-auto-revert-mode t)
 
 (setq user-mail-address "pcurry2@illinois.edu")
 
