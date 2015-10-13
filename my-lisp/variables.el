@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-10-12 16:06:38 currypx>
+;; Time-stamp: <2015-10-13 16:14:24 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -74,6 +74,9 @@
 ;; Sentence end commands will work with sentences that end with a single
 ;; space.
 (setq sentence-end-double-space nil)
+
+;; Enable window movement with Shift-<arrow-key>
+(windmove-default-keybindings)
 
 ;; Use ido mode for switching between buffers and files.
 (ido-mode 1)
