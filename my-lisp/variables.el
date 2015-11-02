@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-10-13 16:14:24 currypx>
+;; Time-stamp: <2015-10-30 12:16:07 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -88,6 +88,7 @@
 (put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
 
