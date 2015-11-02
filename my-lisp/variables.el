@@ -140,3 +140,7 @@
 (setq auto-insert t)
 (setq auto-insert-query nil)
 (setq auto-insert-directory "~/.insert/")
+
+;; Set these values globally
+(setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "-i")
