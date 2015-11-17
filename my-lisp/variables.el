@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-10-30 12:16:07 currypx>
+;; Time-stamp: <2015-11-17 16:48:04 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -70,6 +70,10 @@
 
 ;; use y/n instead of yes-or-no confirmation
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Add easier to remember command for turning wrapping on/off.
+;; The name is similar to the vim command for turning off wrapping.
+(defalias 'nowrap-toggle 'toggle-truncate-lines)
 
 ;; Sentence end commands will work with sentences that end with a single
 ;; space.
