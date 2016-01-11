@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-09-16 12:02:59 currypx>
+;; Time-stamp: <2016-01-07 12:20:13 currypx>
 
 ;;; Description: Global key bindings
 
@@ -11,7 +11,8 @@
 
 (global-set-key "\C-cr" 'comment-region)
 
-(global-set-key "\C-cl" 'count-lines-region)
+;; Emacs 24.1 added count-words-region bound to M-=
+;(global-set-key "\C-cl" 'count-lines-region)
 
 ;; read-only viewing mode
 (global-set-key "\C-cv" 'view-mode)
