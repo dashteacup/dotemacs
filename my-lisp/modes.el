@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-01-27 14:07:02 currypx>
+;; Time-stamp: <2016-02-01 10:36:05 currypx>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -29,6 +29,9 @@
             (setq c-tab-always-indent nil)
             (c-toggle-hungry-state t)
             (setq c-block-comment-prefix "")
+            ; Use C++ style comments, which C has supported since c99.
+            (setq comment-start "//")
+            (setq comment-end "")
             (if (srequire 'subword) (subword-mode 1))
             (if (srequire 'flymake) (flymake-mode 1))
             (local-set-key "\C-cc" 'compile)
