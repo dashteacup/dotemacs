@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-01-07 12:20:13 currypx>
+;; Time-stamp: <2016-03-24 14:11:23 currypx>
 
 ;;; Description: Global key bindings
 
@@ -60,3 +60,10 @@
 (define-key messages-buffer-mode-map "p" 'previous-line)
 (define-key messages-buffer-mode-map "j" 'next-line)
 (define-key messages-buffer-mode-map "k" 'previous-line)
+
+(defun ido-my-keys ()
+  "Add my personal keybindings to ido.
+ido-mode expects you to add custom keybindings by adding hooks to ido-setup-hook."
+  ;; Make backward-kill-word keybinding work the way I expect it to.
+  (define-key ido-completion-map (kbd "<M-backspace>") 'ido-delete-backward-updir))
+(add-hook 'ido-setup-hook 'ido-my-keys)
