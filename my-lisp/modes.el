@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-02-01 10:36:05 currypx>
+;; Time-stamp: <2016-05-13 14:44:32 currypx>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -139,25 +139,46 @@
 (add-hook 'flymake-mode-hook
           (lambda ()
             ;; I HATE dialog boxes.
-            (setq flymake-gui-warnings-enabled nil)))
+            (setq flymake-gui-warnings-enabled nil)
+            (define-key python-mode-map "\C-cn" 'flymake-goto-next-error)
+            (define-key python-mode-map "\C-cp" 'flymake-goto-prev-error)
+            ;; wait these seconds before rerunning flymake
+            (setq-default flymake-no-changes-timeout 1.5)))
 
 ;; flymake has no hook variable.  Annoying.
 ;; TODO: Yes it does.  Alter this code appropriately.
 (when (load "flymake" t)
-  (defvar epylintargs ""
+  ;;; Copied from: http://stackoverflow.com/questions/14082975/running-flymake-for-python-when-files-dont-have-py-extension
+  ;; This lets me set flymake to run by filename OR mode
+  (defun flymake-get-file-name-mode-and-masks (file-name)
+    "Return the corresponding entry from `flymake-allowed-file-name-masks'."
+    (unless (stringp file-name)
+      (error "Invalid file-name"))
+    (let ((fnm flymake-allowed-file-name-masks)
+          (mode-and-masks nil)
+          (matcher nil))
+      (while (and (not mode-and-masks) fnm)
+        (setq matcher (car (car fnm)))
+        (if (or (and (stringp matcher) (string-match matcher file-name))
+                (and (symbolp matcher) (equal matcher major-mode)))
+            (setq mode-and-masks (cdr (car fnm))))
+        (setq fnm (cdr fnm)))
+      (flymake-log 3 "file %s, init=%s" file-name (car mode-and-masks))
+      mode-and-masks))
+  ;;; End Copy
+
+  (defvar epylintargs "-d W0403,R,C"
     "String of command line arguments to be passed to pylint.")
 
   (defun flymake-pylint-init ()
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-      (list "epylint.py" (list local-file epylintargs))))
+                       'flymake-create-temp-inplace)))
+      (list "epylint" (list temp-file epylintargs))))
 
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pylint-init))
-
+  (add-to-list 'flymake-allowed-file-name-masks
+               '(python-mode flymake-pylint-init))
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.pm\\'" flymake-perl-init)))
 
