@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-03-24 14:11:23 currypx>
+;; Time-stamp: <2016-06-02 14:31:05 currypx>
 
 ;;; Description: Global key bindings
 
@@ -67,3 +67,21 @@ ido-mode expects you to add custom keybindings by adding hooks to ido-setup-hook
   ;; Make backward-kill-word keybinding work the way I expect it to.
   (define-key ido-completion-map (kbd "<M-backspace>") 'ido-delete-backward-updir))
 (add-hook 'ido-setup-hook 'ido-my-keys)
+
+(when (srequire 'evil)
+  ;; Unbind all of these insert mode shortcuts so it will behave like normal emacs
+  (define-key evil-insert-state-map "\C-w" nil) ; evil-delete-backward-word
+  (define-key evil-insert-state-map "\C-a" nil) ; evil-paste-last-insertion
+  (define-key evil-insert-state-map "\C-d" nil) ; evil-shift-left-line
+  (define-key evil-insert-state-map "\C-t" nil) ; evil-shift-right-line
+  (define-key evil-insert-state-map "\C-p" nil) ; evil-complete-previous
+  (define-key evil-insert-state-map "\C-n" nil) ; evil-complete-next
+  (define-key evil-insert-state-map "\C-e" nil) ; evil-copy-from-below
+  (define-key evil-insert-state-map "\C-y" nil) ; evil-copy-from-above
+  (define-key evil-insert-state-map "\C-r" nil) ; evil-paste-from-register
+  (define-key evil-insert-state-map "\C-o" nil) ; evil-execute-in-normal-state
+  (define-key evil-insert-state-map "\C-k" nil) ; evil-insert-digraph
+  (define-key evil-insert-state-map "\C-v" nil) ; quoted-insert
+  ;(define-key evil-insert-state-map "\C-z" nil) ; evil-emacs-state
+  (define-key evil-insert-state-map (kbd "<delete>") nil)  ; delete-char
+)
