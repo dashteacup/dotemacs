@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2015-11-17 16:48:04 currypx>
+;; Time-stamp: <2016-06-02 15:07:00 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -148,3 +148,12 @@
 ;; Set these values globally
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i")
+
+(when (srequire 'evil)
+  ;; Use the same type of cursor for insert/emacs states.
+  (setq-default evil-emacs-state-cursor evil-insert-state-cursor)
+  ;; I want to be able to use tab to move between links in help-mode.
+  (add-to-list 'evil-emacs-state-modes 'help-mode)
+  ;; I want to start commit messages in insert state, but they don't have
+  ;; their own mode. Try this for now.
+  (add-to-list 'evil-insert-state-modes 'text-mode))
