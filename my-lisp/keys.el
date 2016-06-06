@@ -88,4 +88,9 @@ ido-mode expects you to add custom keybindings by adding hooks to ido-setup-hook
   (define-key evil-insert-state-map "\C-v" nil) ; quoted-insert
   ;(define-key evil-insert-state-map "\C-z" nil) ; evil-emacs-state
   (define-key evil-insert-state-map (kbd "<delete>") nil)  ; delete-char
+
+  ;; I want to be able to use tab to move between links in help-mode.
+  (evil-define-key 'motion help-mode-map (kbd "<tab>") 'forward-button)
+  (evil-define-key 'motion help-mode-map (kbd "SPC") 'scroll-up-command)
+  (evil-define-key 'motion help-mode-map (kbd "<backspace>") 'scroll-down-command)
 )
