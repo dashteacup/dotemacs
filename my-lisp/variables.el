@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-06-06 12:19:09 currypx>
+;; Time-stamp: <2016-06-09 12:11:44 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -15,6 +15,23 @@
   (tool-bar-mode -1))
 
 (setq frame-title-format "%b")
+
+;; Stop resizing my split windows
+(setq even-window-heights nil)
+
+;; Display specific customizations that I don't want on my Mac.
+(unless (featurep 'aquamacs)
+  ;; Show a horizontal line where the active cursor is.
+  (when (require 'hl-line nil t)
+    (global-hl-line-mode t)
+    (set-face-background hl-line-face "azure2"))
+
+  ;; Use a red bar for the cursor
+  (add-to-list 'default-frame-alist '(cursor-color . "#ff0000"))
+  (setq-default cursor-type 'bar)
+
+  ;; Make the current window's mode line stand out more
+  (set-face-background 'mode-line "light goldenrod"))
 
 ;; activates image viewing in emacs
 (when (featurep 'image-file)
