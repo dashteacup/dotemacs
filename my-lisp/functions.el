@@ -1,7 +1,7 @@
 ;; functions.el
 ;; Author: Paul Curry
 ;; Created: 2006-12-09
-;; Time-stamp: <2015-09-02 15:02:52 currypx>
+;; Time-stamp: <2016-06-09 16:30:21 currypx>
 
 ;;; Description: Helper function definitions.
 
@@ -118,6 +118,22 @@ Return feature if feature can be loaded, nil otherwise."
   (setq ad-return-value (expand-file-name (file-name-nondirectory ad-return-value)
                                           temporary-file-directory)))
 ;;; end swipe
+
+;; Make * and # behave like they do vim (underscore and hyphen are part of a
+;; single word)
+(defadvice evil-search-word-forward (around underscore-as-word activate)
+  (let ((table (copy-syntax-table (syntax-table))))
+    (modify-syntax-entry ?_ "w" table)
+    (modify-syntax-entry ?- "w" table)
+    (with-syntax-table table
+      ad-do-it)))
+
+(defadvice evil-search-word-backward (around underscore-as-word activate)
+  (let ((table (copy-syntax-table (syntax-table))))
+    (modify-syntax-entry ?_ "w" table)
+    (modify-syntax-entry ?- "w" table)
+    (with-syntax-table table
+      ad-do-it)))
 
 ;;; Commented out because I've been using a single space between sentences
 ;;; lately.
