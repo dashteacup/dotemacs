@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-05-13 14:44:32 currypx>
+;; Time-stamp: <2016-06-09 12:54:08 currypx>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -34,6 +34,7 @@
             (setq comment-end "")
             (if (srequire 'subword) (subword-mode 1))
             (if (srequire 'flymake) (flymake-mode 1))
+            (when (srequire 'flyspell) (flyspell-prog-mode))
             (local-set-key "\C-cc" 'compile)
             (local-set-key "\C-j" 'comment-indent-new-line)
             (local-set-key [f7] 'make-unit-tests)))
@@ -44,12 +45,14 @@
 
 (add-hook 'java-mode-hook
           (lambda ()
+            (when (srequire 'flyspell) (flyspell-prog-mode))
             (c-set-style "java")
             (c-toggle-hungry-state t)))
 
 (add-hook 'python-mode-hook
           (lambda ()
             (if (srequire 'subword) (subword-mode 1))
+            (when (srequire 'flyspell) (flyspell-prog-mode))
             (if (and (srequire 'flymake)
                      (exec-in-path-p "pylint"))
                 (flymake-mode 1))))
@@ -66,6 +69,7 @@
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
+            (when (srequire 'flyspell) (flyspell-prog-mode))
             ;; for emacs source code
             (setq tab-width 8)
             (eldoc-mode 1)))
