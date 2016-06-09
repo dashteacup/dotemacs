@@ -69,6 +69,11 @@
 ;; Reload file when it changes on disk
 (global-auto-revert-mode t)
 
+;; Enable the melpa emacs package archive.
+(when (srequire 'package)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+  (package-initialize))
+
 (setq user-mail-address "pcurry2@illinois.edu")
 
 (setq gnus-select-method '(nntp "news.cs.uiuc.edu"))
