@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-06-06 12:47:37 currypx>
+;; Time-stamp: <2016-06-16 13:59:49 currypx>
 
 ;;; Description: Global key bindings
 
@@ -25,6 +25,8 @@
 ;(global-set-key (kbd "C-<return>") 'complete-tag)
 
 (global-set-key [?\C-\;] 'dabbrev-expand)
+
+(global-set-key [f4] 'speedbar-get-focus)
 
 (global-set-key [f5] 'revert-buffer-without-query)
 
