@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-06-09 12:54:08 currypx>
+;; Time-stamp: <2016-06-15 14:31:09 currypx>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -171,7 +171,7 @@
       mode-and-masks))
   ;;; End Copy
 
-  (defvar epylintargs "-d W0403,R,C"
+  (defvar epylintargs "-d W0403,W0232,R,C"
     "String of command line arguments to be passed to pylint.")
 
   (defun flymake-pylint-init ()
