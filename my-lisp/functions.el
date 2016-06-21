@@ -1,7 +1,7 @@
 ;; functions.el
 ;; Author: Paul Curry
 ;; Created: 2006-12-09
-;; Time-stamp: <2016-06-09 16:30:21 currypx>
+;; Time-stamp: <2016-06-21 12:00:50 currypx>
 
 ;;; Description: Helper function definitions.
 
@@ -98,6 +98,14 @@ The ISO format is YYYY-MM-DD."
 Requires feature while surpressing error messages.
 Return feature if feature can be loaded, nil otherwise."
   (require feature nil t))
+
+(defun my-speedbar-get-focus ()
+  "Change frame focus to or from the speedbar frame.
+This customized version of `speedbar-get-focus' works the same except it
+doesn't refresh the frame when you switch"
+  (interactive)
+  (speedbar-reset-scanners)
+  (dframe-get-focus 'speedbar-frame 'speedbar-frame-mode))
 
 
 ;;; Advice for existing functions

@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-06-16 13:59:49 currypx>
+;; Time-stamp: <2016-06-21 12:19:11 currypx>
 
 ;;; Description: Global key bindings
 
@@ -26,7 +26,7 @@
 
 (global-set-key [?\C-\;] 'dabbrev-expand)
 
-(global-set-key [f4] 'speedbar-get-focus)
+(global-set-key [f4] 'my-speedbar-get-focus)
 
 (global-set-key [f5] 'revert-buffer-without-query)
 
@@ -95,4 +95,8 @@ ido-mode expects you to add custom keybindings by adding hooks to ido-setup-hook
   (evil-define-key 'motion help-mode-map (kbd "<tab>") 'forward-button)
   (evil-define-key 'motion help-mode-map (kbd "SPC") 'scroll-up-command)
   (evil-define-key 'motion help-mode-map (kbd "<backspace>") 'scroll-down-command)
+
+  ;; I want evil to go to the top of the speedbar with gg instead of
+  ;; refreshing the buffer. You can still refresh it with r.
+  (define-key speedbar-mode-map "g" nil)
 )
