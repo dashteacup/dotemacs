@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-06-21 12:19:11 currypx>
+;; Time-stamp: <2016-06-22 12:27:24 currypx>
 
 ;;; Description: Global key bindings
 
@@ -98,5 +98,6 @@ ido-mode expects you to add custom keybindings by adding hooks to ido-setup-hook
 
   ;; I want evil to go to the top of the speedbar with gg instead of
   ;; refreshing the buffer. You can still refresh it with r.
-  (define-key speedbar-mode-map "g" nil)
+  (when (srequire 'speedbar)
+    (define-key speedbar-mode-map "g" nil))
 )
