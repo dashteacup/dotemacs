@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-06-22 12:27:24 currypx>
+;; Time-stamp: <2016-07-06 16:45:34 currypx>
 
 ;;; Description: Global key bindings
 
@@ -74,6 +74,8 @@ ido-mode expects you to add custom keybindings by adding hooks to ido-setup-hook
   ;; I prefer space/backspace to scroll like in view-mode
   (define-key evil-normal-state-map (kbd "SPC") 'evil-scroll-page-down)
   (define-key evil-normal-state-map (kbd "<backspace>") 'evil-scroll-page-up)
+  ;; I prefer emacs' find-tag over evil-repeat-pop
+  (define-key evil-normal-state-map "\M-." 'find-tag)
 
   ;; Unbind all of these insert mode shortcuts so it will behave like normal emacs
   (define-key evil-insert-state-map "\C-w" nil) ; evil-delete-backward-word
