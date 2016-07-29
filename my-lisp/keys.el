@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-07-06 16:45:34 currypx>
+;; Time-stamp: <2016-07-29 15:56:34 currypx>
 
 ;;; Description: Global key bindings
 
@@ -31,6 +31,12 @@
 (global-set-key [f5] 'revert-buffer-without-query)
 
 (global-set-key [f6] 'delete-other-windows)
+
+(when (srequire 'buffer-move)
+  (global-set-key (kbd "<C-S-up>")    'buf-move-up)
+  (global-set-key (kbd "<C-S-down>")  'buf-move-down)
+  (global-set-key (kbd "<C-S-left>")  'buf-move-left)
+  (global-set-key (kbd "<C-S-right>") 'buf-move-right))
 
 (define-key ctl-x-4-map "k" 'kill-buffer-other-window)
 
