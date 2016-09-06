@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-06-15 13:25:22 currypx>
+;; Time-stamp: <2016-09-06 15:46:54 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -180,3 +180,9 @@
   ;; their own mode. Try this for now.
   (add-to-list 'evil-insert-state-modes 'text-mode)
   (evil-mode 1))
+
+;;; csv-mode settings
+;; Don't hide the csv field separators (usually commas)
+(setq csv-invisibility-default nil)
+;; Since we show the separator, we don't need whitespace padding.
+(setq csv-align-padding 0)
