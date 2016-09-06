@@ -1,7 +1,7 @@
 ;;; notes.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2007-10-05 13:34:42 pcurry>
+;; Time-stamp: <2016-08-23 10:46:44 currypx>
 
 ;; Description: Notes and hints I've collected over the years.
 
@@ -46,3 +46,6 @@
 ;; longlines-mode useful for viewing text files with soft newlines.
 
 ;; dired-do-query-replace-regexp <- useful!
+
+;; Show human readable description of key code number X:
+;; (key-description [X])
