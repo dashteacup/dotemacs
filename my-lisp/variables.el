@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-09-06 15:46:54 currypx>
+;; Time-stamp: <2016-10-13 13:46:55 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -71,7 +71,10 @@
 
 ;; Enable the melpa emacs package archive.
 (when (srequire 'package)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.org/packages/"))
+  (add-to-list 'package-archives
+               '("marmalade" . "http://marmalade-repo.org/packages/"))
   (package-initialize))
 
 (setq user-mail-address "pcurry2@illinois.edu")
