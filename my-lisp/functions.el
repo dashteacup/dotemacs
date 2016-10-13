@@ -1,7 +1,7 @@
 ;; functions.el
 ;; Author: Paul Curry
 ;; Created: 2006-12-09
-;; Time-stamp: <2016-06-21 15:09:23 currypx>
+;; Time-stamp: <2016-09-08 17:24:52 currypx>
 
 ;;; Description: Helper function definitions.
 
@@ -137,6 +137,21 @@ doesn't refresh the frame when you switch"
       ad-do-it)))
 
 (defadvice evil-search-word-backward (around underscore-as-word activate)
+  (let ((table (copy-syntax-table (syntax-table))))
+    (modify-syntax-entry ?_ "w" table)
+    (modify-syntax-entry ?- "w" table)
+    (with-syntax-table table
+      ad-do-it)))
+
+;; Make underscore and hypen recognizable as part of words with / and ?
+(defadvice evil-search-forward (around underscore-as-word activate)
+  (let ((table (copy-syntax-table (syntax-table))))
+    (modify-syntax-entry ?_ "w" table)
+    (modify-syntax-entry ?- "w" table)
+    (with-syntax-table table
+      ad-do-it)))
+
+(defadvice evil-search-backward (around underscore-as-word activate)
   (let ((table (copy-syntax-table (syntax-table))))
     (modify-syntax-entry ?_ "w" table)
     (modify-syntax-entry ?- "w" table)
