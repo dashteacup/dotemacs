@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-10-13 13:46:55 currypx>
+;; Time-stamp: <2016-10-20 16:14:44 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -69,10 +69,12 @@
 ;; Reload file when it changes on disk
 (global-auto-revert-mode t)
 
-;; Enable the melpa emacs package archive.
+;; Enable non-gnu emacs package archives.
 (when (srequire 'package)
+  ;; Melpa pulls directly from a code repo, so it's less stable.
   (add-to-list 'package-archives
                '("melpa" . "http://melpa.org/packages/"))
+  ;; Marmalade requires official package releases, so it's more stable.
   (add-to-list 'package-archives
                '("marmalade" . "http://marmalade-repo.org/packages/"))
   (package-initialize))
