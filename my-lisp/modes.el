@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-06-15 14:31:09 currypx>
+;; Time-stamp: <2016-10-25 14:58:57 currypx>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -103,6 +103,10 @@
             (mapc (lambda (char)
                     (local-set-key char 'skeleton-pair-insert-maybe))
                   '("(" "[" "{"))))
+
+(defun my-org-mode-hook ()
+  (setq evil-auto-indent nil))
+(add-hook 'org-mode-hook 'my-org-mode-hook)
 
 (add-hook 'asm-mode-hook
           (lambda ()
