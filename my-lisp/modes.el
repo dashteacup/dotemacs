@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-10-25 14:58:57 currypx>
+;; Time-stamp: <2017-03-17 14:24:15 currypx>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -53,9 +53,11 @@
           (lambda ()
             (if (srequire 'subword) (subword-mode 1))
             (when (srequire 'flyspell) (flyspell-prog-mode))
-            (if (and (srequire 'flymake)
-                     (exec-in-path-p "pylint"))
-                (flymake-mode 1))))
+            (when (and (srequire 'flymake)
+                       (exec-in-path-p "pylint"))
+              (flymake-mode 1)
+              (define-key python-mode-map "\C-cn" 'flymake-goto-next-error)
+              (define-key python-mode-map "\C-cp" 'flymake-goto-prev-error))))
 
 (add-hook 'cperl-mode-hook
           (lambda ()
@@ -148,8 +150,6 @@
           (lambda ()
             ;; I HATE dialog boxes.
             (setq flymake-gui-warnings-enabled nil)
-            (define-key python-mode-map "\C-cn" 'flymake-goto-next-error)
-            (define-key python-mode-map "\C-cp" 'flymake-goto-prev-error)
             ;; wait these seconds before rerunning flymake
             (setq-default flymake-no-changes-timeout 1.5)))
 
