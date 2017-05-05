@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2016-10-20 16:14:44 currypx>
+;; Time-stamp: <2017-05-05 10:33:33 currypx>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -46,7 +46,7 @@
   (set-default 'ws-trim-level 0))
 
 ;; File beginning based mode selection gets confused too easily.
-(setq magic-mode-alist nil)
+;(setq magic-mode-alist nil)
 
 ;; indicates lines that are empty like vi's ~
 (setq default-indicate-empty-lines t)
