@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2017-05-05 11:59:36 currypx>
+;; Time-stamp: <2018-01-18 17:39:52 currypx>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -80,6 +80,14 @@
             ;; for emacs source code
             (setq tab-width 8)
             (eldoc-mode 1)))
+
+(add-hook 'tcl-mode-hook
+          (lambda ()
+            (when (srequire 'flyspell) (flyspell-prog-mode))))
+
+(add-hook 'sh-mode-hook
+          (lambda ()
+            (when (srequire 'flyspell) (flyspell-prog-mode))))
 
 ;; default doesn't work well for me
 (if (featurep 'aquamacs) (setq text-mode-hook nil))
