@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2017-05-05 10:33:33 currypx>
+;; Time-stamp: <2018-07-18 17:11:08 pcurry>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -49,7 +49,7 @@
 ;(setq magic-mode-alist nil)
 
 ;; indicates lines that are empty like vi's ~
-(setq default-indicate-empty-lines t)
+(setq-default indicate-empty-lines t)
 
 ;; automatically adds a newline to the end of a text file
 (setq require-final-newline t)
