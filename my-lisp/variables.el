@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-18 17:11:08 pcurry>
+;; Time-stamp: <2018-07-18 17:19:09 pcurry>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -79,9 +79,7 @@
                '("marmalade" . "http://marmalade-repo.org/packages/"))
   (package-initialize))
 
-(setq user-mail-address "pcurry2@illinois.edu")
-
-(setq gnus-select-method '(nntp "news.cs.uiuc.edu"))
+(setq user-mail-address "dashteacup@gmail.com")
 
 (column-number-mode t)
 
