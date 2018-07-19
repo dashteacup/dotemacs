@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-18 21:01:19 pcurry>
+;; Time-stamp: <2018-07-18 21:01:57 pcurry>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -11,7 +11,7 @@
 
 ;; Needed for OS X clipboard compatibility. May break other systems;
 ;; modify if it does.
-(setq x-select-enable-clipboard t)
+(setq select-enable-clipboard t)
 
 (when (featurep 'tool-bar)
   (tool-bar-mode -1))
