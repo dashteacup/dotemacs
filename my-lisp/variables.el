@@ -1,9 +1,11 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-18 20:05:04 pcurry>
+;; Time-stamp: <2018-07-18 21:01:19 pcurry>
 
 ;;; Description: Customization of various emacs variable settings.
+
+(setq-default message-log-max 5000)
 
 (setq mac-command-modifier 'meta)
 
