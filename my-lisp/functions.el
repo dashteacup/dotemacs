@@ -1,7 +1,7 @@
 ;; functions.el
 ;; Author: Paul Curry
 ;; Created: 2006-12-09
-;; Time-stamp: <2016-09-08 17:24:52 currypx>
+;; Time-stamp: <2018-07-18 20:20:45 pcurry>
 
 ;;; Description: Helper function definitions.
 
@@ -95,9 +95,13 @@ The ISO format is YYYY-MM-DD."
 
 (defun srequire (feature)
   "Silent `require'.  Shorthand for (require feature nil t).
-Requires feature while surpressing error messages.
+Requires feature while suppressing errors.
 Return feature if feature can be loaded, nil otherwise."
-  (require feature nil t))
+  (let ((retval (require feature nil t)))
+    (unless retval
+      (message "%s couldn't require feature: %s"
+               (or load-file-name buffer-file-name) feature))
+    retval))
 
 (defun my-speedbar-get-focus ()
   "Change frame focus to or from the speedbar frame.
