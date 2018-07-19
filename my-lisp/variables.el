@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-18 17:19:09 pcurry>
+;; Time-stamp: <2018-07-18 20:05:04 pcurry>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -64,7 +64,7 @@
 ;; desktop-save-mode doesn't.
 (when (fboundp 'desktop-save-mode)
   (desktop-save-mode 1)
-  (setq desktop-save t))
+  (setq desktop-save 'ask))
 
 ;; Reload file when it changes on disk
 (global-auto-revert-mode t)
@@ -157,6 +157,7 @@
 
 (setq transient-mark-mode t)
 
+;;; Set bare minimums for undo limits
 (let ((ulimit 50000))
   (when (< undo-limit ulimit)
     (setq undo-limit ulimit)))
