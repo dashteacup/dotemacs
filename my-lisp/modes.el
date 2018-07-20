@@ -1,10 +1,9 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-20 16:19:50 pcurry>
+;; Time-stamp: <2018-07-20 17:03:29 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
-;; I use anonymous functions to avoid unnecessary naming.
 
 ;;;; C/C++
 ;; use c++ mode by default for .h files
