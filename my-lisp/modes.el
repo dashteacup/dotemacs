@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-20 17:03:29 pcurry>
+;; Time-stamp: <2018-07-24 13:03:58 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -173,6 +173,12 @@
 (defun my-dired-mode-hook ()
   (local-set-key "\C-cc" 'compile))
 (add-hook 'dired-mode-hook 'my-dired-mode-hook)
+
+
+(defun my-flyspell-mode-hook ()
+  ;; This is reserved for my dabbrev-expand key binding.
+  (define-key flyspell-mode-map [?\C-\;] nil))
+(add-hook 'flyspell-mode-hook 'my-flyspell-mode-hook)
 
 
 (defun my-flymake-mode-hook ()
