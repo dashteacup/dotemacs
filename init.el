@@ -1,6 +1,6 @@
 ;;;; Paul's init.el file
 ;; Originally written sometime before September 7, 2003
-;; Time-stamp: <2018-07-24 15:06:44 pcurry>
+;; Time-stamp: <2018-07-24 15:46:02 pcurry>
 
 ;;; This used to be my .emacs file, but Emacs 22 and up allows you to
 ;;; use ~/.emacs.d/init.el as your config file, so it got a name change.
@@ -24,7 +24,6 @@
 ;; Necessary to be able to require installed packages.
 (package-initialize)
 
-;; These paths are constants.
 (let ((my-elisp-dir "~/.emacs.d/my-lisp/"))
   (add-to-list 'load-path my-elisp-dir))
 
