@@ -1,6 +1,6 @@
 ;;;; Paul's init.el file
 ;; Originally written sometime before September 7, 2003
-;; Time-stamp: <2018-07-24 14:55:08 pcurry>
+;; Time-stamp: <2018-07-24 15:06:44 pcurry>
 
 ;;; This used to be my .emacs file, but Emacs 22 and up allows you to
 ;;; use ~/.emacs.d/init.el as your config file, so it got a name change.
@@ -25,22 +25,8 @@
 (package-initialize)
 
 ;; These paths are constants.
-(let* ((elisp-dir "~/.emacs.d/my-lisp/")
-       (package-dir "~/.emacs.d/packages/")
-       (loaddefs (concat package-dir "loaddefs.el"))
-       (autoloader (concat package-dir "update-autoloads.el")))
-
-  ;; My lisp files directories.
-  (add-to-list 'load-path elisp-dir)
-
-  ;; My user installed packages.
-  (add-to-list 'load-path package-dir)
-
-  ;; Autoloads of user installed packages.
-  (unless (file-exists-p loaddefs)
-    (load-file autoloader)
-    (update-autoloads-for-packages))
-  (load-file loaddefs))
+(let ((my-elisp-dir "~/.emacs.d/my-lisp/"))
+  (add-to-list 'load-path my-elisp-dir))
 
 ;;; Load all my custom lisp files.
 (mapc 'load-library
