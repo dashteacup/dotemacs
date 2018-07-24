@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-18 21:01:57 pcurry>
+;; Time-stamp: <2018-07-24 14:55:27 pcurry>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -21,7 +21,7 @@
 ;; Stop resizing my split windows
 (setq even-window-heights nil)
 
-;; Display specific customizations that I don't want on my Mac.
+;; Display specific customizations that I don't want with Aquamacs.
 (unless (featurep 'aquamacs)
   ;; Show a horizontal line where the active cursor is.
   (when (require 'hl-line nil t)
@@ -33,7 +33,10 @@
   (setq-default cursor-type 'bar)
 
   ;; Make the current window's mode line stand out more
-  (set-face-background 'mode-line "light goldenrod"))
+  (set-face-background 'mode-line "light goldenrod")
+
+  (when (eq system-type 'darwin)
+    (set-face-attribute 'default nil :inherit nil :stipple nil :background "White" :foreground "Black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant 'normal :weight 'normal :height 110 :width 'normal :foundry "nil" :family "Menlo")))
 
 ;; activates image viewing in emacs
 (when (featurep 'image-file)
