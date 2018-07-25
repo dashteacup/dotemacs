@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-25 14:32:26 pcurry>
+;; Time-stamp: <2018-07-25 14:46:49 pcurry>
 
 ;;; Description: Global key bindings
 
@@ -34,6 +34,8 @@
   (global-set-key (kbd "<C-S-down>")  'buf-move-down)
   (global-set-key (kbd "<C-S-left>")  'buf-move-left)
   (global-set-key (kbd "<C-S-right>") 'buf-move-right))
+
+(global-set-key "\M-`" 'other-frame)
 
 (define-key ctl-x-4-map "k" 'kill-buffer-other-window)
 
