@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-25 16:16:57 pcurry>
+;; Time-stamp: <2018-07-25 16:23:45 pcurry>
 
 ;;; Description: Global key bindings
 
@@ -48,12 +48,6 @@
 (define-key ctl-x-map "k" 'kill-this-buffer)
 
 (define-key help-map "M" 'man)
-
-(define-key messages-buffer-mode-map "o" 'other-window)
-(define-key messages-buffer-mode-map "n" 'next-line)
-(define-key messages-buffer-mode-map "p" 'previous-line)
-(define-key messages-buffer-mode-map "j" 'next-line)
-(define-key messages-buffer-mode-map "k" 'previous-line)
 
 (when (srequire 'evil)
   ;; I prefer space/backspace to scroll like in view-mode

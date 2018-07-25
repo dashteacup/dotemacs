@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-25 18:02:14 pcurry>
+;; Time-stamp: <2018-07-25 18:05:53 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -182,6 +182,20 @@
   (define-key help-mode-map "j" 'next-line)
   (define-key help-mode-map "k" 'previous-line))
 (add-hook 'help-mode-hook 'my-help-mode-hook)
+
+
+(defun my-messages-buffer-mode-hook ()
+  (define-key messages-buffer-mode-map "o" 'other-window)
+  (define-key messages-buffer-mode-map "n" 'next-line)
+  (define-key messages-buffer-mode-map "p" 'previous-line)
+  (define-key messages-buffer-mode-map "j" 'next-line)
+  (define-key messages-buffer-mode-map "k" 'previous-line))
+;; The hook won't apply to the *Messages* buffer created at startup
+;; because it already exists by the time the user customization file
+;; is loaded. Get around this by calling it manually the first time.
+(with-current-buffer "*Messages*" (my-messages-buffer-mode-hook))
+;; Add hook so it still works after killing the *Messages* buffer.
+(add-hook 'messages-buffer-mode-hook 'my-messages-buffer-mode-hook)
 
 
 (defun my-dired-mode-hook ()
