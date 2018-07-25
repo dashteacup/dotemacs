@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-25 14:32:41 pcurry>
+;; Time-stamp: <2018-07-25 16:12:35 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -174,7 +174,13 @@
 
 
 (defun my-help-mode-hook ()
-  (define-key help-mode-map "l" 'help-go-back))
+  (define-key help-mode-map "l" 'help-go-back)
+  (define-key help-mode-map "o" 'other-window)
+  (define-key help-mode-map "n" 'next-line)
+  (define-key help-mode-map "p" 'previous-line)
+  ;; vim-ish line movement (slightly easier to type)
+  (define-key help-mode-map "j" 'next-line)
+  (define-key help-mode-map "k" 'previous-line))
 (add-hook 'help-mode-hook 'my-help-mode-hook)
 
 
