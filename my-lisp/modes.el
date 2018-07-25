@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-25 16:12:35 pcurry>
+;; Time-stamp: <2018-07-25 18:02:14 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -187,6 +187,14 @@
 (defun my-dired-mode-hook ()
   (local-set-key "\C-cc" 'compile))
 (add-hook 'dired-mode-hook 'my-dired-mode-hook)
+
+
+(defun my-view-mode-hook ()
+  (define-key view-mode-map "n" 'next-line)
+  (define-key view-mode-map "p" 'previous-line)
+  (define-key view-mode-map "j" 'next-line)
+  (define-key view-mode-map "k" 'previous-line))
+(add-hook 'view-mode-hook 'my-view-mode-hook)
 
 
 (defun my-flyspell-mode-hook ()
