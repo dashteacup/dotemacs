@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-25 14:46:49 pcurry>
+;; Time-stamp: <2018-07-25 15:02:16 pcurry>
 
 ;;; Description: Global key bindings
 
@@ -29,6 +29,7 @@
 
 (global-set-key [f6] 'delete-other-windows)
 
+;; buffer-move package doesn't have a hook, so we bind globally
 (when (srequire 'buffer-move)
   (global-set-key (kbd "<C-S-up>")    'buf-move-up)
   (global-set-key (kbd "<C-S-down>")  'buf-move-down)
