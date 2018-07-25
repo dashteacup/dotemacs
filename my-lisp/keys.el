@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-25 14:24:56 pcurry>
+;; Time-stamp: <2018-07-25 14:32:26 pcurry>
 
 ;;; Description: Global key bindings
 
@@ -65,13 +65,6 @@
 (define-key messages-buffer-mode-map "p" 'previous-line)
 (define-key messages-buffer-mode-map "j" 'next-line)
 (define-key messages-buffer-mode-map "k" 'previous-line)
-
-(defun ido-my-keys ()
-  "Add my personal keybindings to ido.
-ido-mode expects you to add custom keybindings by adding hooks to ido-setup-hook."
-  ;; Make backward-kill-word keybinding work the way I expect it to.
-  (define-key ido-completion-map (kbd "<M-backspace>") 'ido-delete-backward-updir))
-(add-hook 'ido-setup-hook 'ido-my-keys)
 
 (when (srequire 'evil)
   ;; I prefer space/backspace to scroll like in view-mode

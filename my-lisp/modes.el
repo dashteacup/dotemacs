@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-24 13:03:58 pcurry>
+;; Time-stamp: <2018-07-25 14:32:41 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -152,6 +152,14 @@
 
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
+
+
+(defun my-ido-setup-hook ()
+  "ido-mode uses the non-standard hook name ido-setup-hook."
+  ;; Make backward-kill-word keybinding work the way I expect it to.
+  (define-key ido-completion-map (kbd "<M-backspace>")
+                                 'ido-delete-backward-updir))
+(add-hook 'ido-setup-hook 'my-ido-setup-hook)
 
 
 ;;; Copied from: http://www.emacswiki.org/emacs/EmacsClient#toc36
