@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-24 14:55:27 pcurry>
+;; Time-stamp: <2018-07-31 17:28:04 pcurry>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -162,14 +162,10 @@
 
 (setq transient-mark-mode t)
 
-;;; Set bare minimums for undo limits
-(let ((ulimit 50000))
-  (when (< undo-limit ulimit)
-    (setq undo-limit ulimit)))
-
-(let ((uslimit 70000))
-  (when (< undo-strong-limit uslimit)
-    (setq undo-strong-limit uslimit)))
+;; Set bare minimums for undo limits because some emacsen have the
+;; default horribly low.
+(setq-at-least undo-limit 50000)
+(setq-at-least undo-strong-limit 70000)
 
 (auto-insert-mode)
 (setq auto-insert t)

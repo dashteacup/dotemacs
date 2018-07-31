@@ -1,7 +1,7 @@
 ;; functions.el
 ;; Author: Paul Curry
 ;; Created: 2006-12-09
-;; Time-stamp: <2018-07-18 20:20:45 pcurry>
+;; Time-stamp: <2018-07-31 17:28:26 pcurry>
 
 ;;; Description: Helper function definitions.
 
@@ -50,6 +50,13 @@ characters."
             (setq over80 t)
           (forward-line)))
       over80)))
+
+(defmacro setq-at-least (var val)
+  "Set variable VAR to value VAL if it is less than VAL.
+Leaves the value unchanged if it is greater than VAL. Useful for
+setting a bare minimum for a value."
+  `(when (< ,var ,val)
+    (setq ,var ,val)))
 
 (defun exec-in-path-p (program)
   "Return t when PROGRAM is in the path.
