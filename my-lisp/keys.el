@@ -1,7 +1,7 @@
 ;; keys.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-25 16:23:45 pcurry>
+;; Time-stamp: <2018-07-31 14:33:30 pcurry>
 
 ;;; Description: Global key bindings
 
@@ -48,39 +48,3 @@
 (define-key ctl-x-map "k" 'kill-this-buffer)
 
 (define-key help-map "M" 'man)
-
-(when (srequire 'evil)
-  ;; I prefer space/backspace to scroll like in view-mode
-  (define-key evil-normal-state-map (kbd "SPC") 'evil-scroll-page-down)
-  (define-key evil-normal-state-map (kbd "<backspace>") 'evil-scroll-page-up)
-  (define-key evil-motion-state-map (kbd "SPC") 'evil-scroll-page-down)
-  (define-key evil-motion-state-map (kbd "<backspace>") 'evil-scroll-page-up)
-  ;; I prefer emacs' find-tag over evil-repeat-pop
-  (define-key evil-normal-state-map "\M-." 'find-tag)
-
-  ;; Unbind all of these insert mode shortcuts so it will behave like normal emacs
-  (define-key evil-insert-state-map "\C-w" nil) ; evil-delete-backward-word
-  (define-key evil-insert-state-map "\C-a" nil) ; evil-paste-last-insertion
-  (define-key evil-insert-state-map "\C-d" nil) ; evil-shift-left-line
-  (define-key evil-insert-state-map "\C-t" nil) ; evil-shift-right-line
-  (define-key evil-insert-state-map "\C-p" nil) ; evil-complete-previous
-  (define-key evil-insert-state-map "\C-n" nil) ; evil-complete-next
-  (define-key evil-insert-state-map "\C-e" nil) ; evil-copy-from-below
-  (define-key evil-insert-state-map "\C-y" nil) ; evil-copy-from-above
-  (define-key evil-insert-state-map "\C-r" nil) ; evil-paste-from-register
-  (define-key evil-insert-state-map "\C-o" nil) ; evil-execute-in-normal-state
-  (define-key evil-insert-state-map "\C-k" nil) ; evil-insert-digraph
-  (define-key evil-insert-state-map "\C-v" nil) ; quoted-insert
-  ;(define-key evil-insert-state-map "\C-z" nil) ; evil-emacs-state
-  (define-key evil-insert-state-map (kbd "<delete>") nil)  ; delete-char
-
-  ;; I want to be able to use tab to move between links in help-mode.
-  (evil-define-key 'motion help-mode-map (kbd "<tab>") 'forward-button)
-  (evil-define-key 'motion help-mode-map (kbd "SPC") 'scroll-up-command)
-  (evil-define-key 'motion help-mode-map (kbd "<backspace>") 'scroll-down-command)
-
-  ;; I want evil to go to the top of the speedbar with gg instead of
-  ;; refreshing the buffer. You can still refresh it with r.
-  (when (srequire 'speedbar)
-    (define-key speedbar-mode-map "g" nil))
-)
