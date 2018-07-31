@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-31 15:25:01 pcurry>
+;; Time-stamp: <2018-07-31 18:03:33 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -143,6 +143,16 @@
 
 
 (defun my-evil-after-load-hook ()
+  ;; Use the same type of cursor for insert/emacs states.
+  (setq-default evil-emacs-state-cursor evil-insert-state-cursor)
+  ;; Give me time to think after starting a search.
+  (setq evil-flash-delay 60)
+
+  ;; I want to start commit messages in insert state, but they don't have
+  ;; their own mode. Try this for now.
+  (add-to-list 'evil-insert-state-modes 'text-mode)
+
+  ;;;; Evil keybindings
   ;; I prefer space/backspace to scroll like in view-mode
   (define-key evil-normal-state-map (kbd "SPC") 'evil-scroll-page-down)
   (define-key evil-normal-state-map (kbd "<backspace>") 'evil-scroll-page-up)
@@ -151,7 +161,7 @@
   ;; I prefer emacs' find-tag over evil-repeat-pop
   (define-key evil-normal-state-map "\M-." 'find-tag)
 
-  ;; Unbind all of these insert mode shortcuts so it will behave like normal emacs
+  ;; Unbind all of these insert mode shortcuts to behave like normal emacs
   (define-key evil-insert-state-map "\C-w" nil) ; evil-delete-backward-word
   (define-key evil-insert-state-map "\C-a" nil) ; evil-paste-last-insertion
   (define-key evil-insert-state-map "\C-d" nil) ; evil-shift-left-line

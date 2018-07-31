@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-31 17:28:04 pcurry>
+;; Time-stamp: <2018-07-31 17:53:42 pcurry>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -177,13 +177,6 @@
       python-shell-interpreter-args "-i")
 
 (when (srequire 'evil)
-  ;; Use the same type of cursor for insert/emacs states.
-  (setq-default evil-emacs-state-cursor evil-insert-state-cursor)
-  ;; Give me time to think after starting a search.
-  (setq evil-flash-delay 60)
-  ;; I want to start commit messages in insert state, but they don't have
-  ;; their own mode. Try this for now.
-  (add-to-list 'evil-insert-state-modes 'text-mode)
   (evil-mode 1))
 
 ;;; csv-mode settings
