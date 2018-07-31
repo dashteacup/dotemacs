@@ -1,6 +1,6 @@
 ;;;; Paul's init.el file
 ;; Originally written sometime before September 7, 2003
-;; Time-stamp: <2018-07-24 15:46:02 pcurry>
+;; Time-stamp: <2018-07-31 15:26:04 pcurry>
 
 ;;; This used to be my .emacs file, but Emacs 22 and up allows you to
 ;;; use ~/.emacs.d/init.el as your config file, so it got a name change.
@@ -30,7 +30,7 @@
 ;;; Load all my custom lisp files.
 (mapc 'load-library
       '("functions"
-        "variables"
         "modes"
+        "variables"
         "templates"
         "keys"))
