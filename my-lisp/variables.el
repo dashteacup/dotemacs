@@ -1,7 +1,7 @@
 ;; variables.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-31 17:53:42 pcurry>
+;; Time-stamp: <2018-08-03 17:25:22 pcurry>
 
 ;;; Description: Customization of various emacs variable settings.
 
@@ -173,7 +173,7 @@
 (setq auto-insert-directory "~/.insert/")
 
 ;; Set these values globally
-(setq python-shell-interpreter "ipython"
+(setq python-shell-interpreter "python3"
       python-shell-interpreter-args "-i")
 
 (when (srequire 'evil)
