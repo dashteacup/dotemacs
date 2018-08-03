@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-07-31 18:03:33 pcurry>
+;; Time-stamp: <2018-08-03 14:53:40 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -269,71 +269,3 @@
   ;; wait these seconds before rerunning flymake
   (setq-default flymake-no-changes-timeout 1.5))
 (add-hook 'flymake-mode-hook 'my-flymake-mode-hook)
-
-
-;; flymake has no hook variable.  Annoying.
-;; TODO: Yes it does.  Alter this code appropriately.
-(when (load "flymake" t)
-  ;;; Copied from: http://stackoverflow.com/questions/14082975/running-flymake-for-python-when-files-dont-have-py-extension
-  ;; This lets me set flymake to run by filename OR mode
-  (defun flymake-get-file-name-mode-and-masks (file-name)
-    "Return the corresponding entry from `flymake-allowed-file-name-masks'."
-    (unless (stringp file-name)
-      (error "Invalid file-name"))
-    (let ((fnm flymake-allowed-file-name-masks)
-          (mode-and-masks nil)
-          (matcher nil))
-      (while (and (not mode-and-masks) fnm)
-        (setq matcher (car (car fnm)))
-        (if (or (and (stringp matcher) (string-match matcher file-name))
-                (and (symbolp matcher) (equal matcher major-mode)))
-            (setq mode-and-masks (cdr (car fnm))))
-        (setq fnm (cdr fnm)))
-      (flymake-log 3 "file %s, init=%s" file-name (car mode-and-masks))
-      mode-and-masks))
-  ;;; End Copy
-
-  (defvar epylintargs "-d W0403,W0232,R,C"
-    "String of command line arguments to be passed to pylint.")
-
-  (defun flymake-pylint-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace)))
-      (list "epylint" (list temp-file epylintargs))))
-
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pylint-init))
-  (add-to-list 'flymake-allowed-file-name-masks
-               '(python-mode flymake-pylint-init))
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.pm\\'" flymake-perl-init)))
-
-;; flymake for javascript mode
-(defconst flymake-allowed-js-file-name-masks '(("\\.json$" flymake-js-init)
-                                               ("\\.js$" flymake-js-init)))
-(defcustom flymake-js-detect-trailing-comma t nil :type 'boolean)
-(defvar flymake-js-err-line-patterns
-  '(("^\\(.+\\)\:\\([0-9]+\\)\: \\(SyntaxError\:.+\\)\:$" 1 2 nil 3)))
-(when flymake-js-detect-trailing-comma
-  (setq flymake-js-err-line-patterns
-        (append flymake-js-err-line-patterns
-                '(("^\\(.+\\)\:\\([0-9]+\\)\: \\(strict warning: trailing comma.+\\)\:$" 1 2 nil 3)))))
-
-(defun flymake-js-init ()
-  (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                     'flymake-create-temp-inplace))
-         (local-file (file-relative-name
-                      temp-file
-                      (file-name-directory buffer-file-name))))
-    (list "js" (list "-s" local-file))))
-
-(defun flymake-js-load ()
-  (interactive)
-  (defadvice flymake-post-syntax-check (before flymake-force-check-was-interrupted)
-    (setq flymake-check-was-interrupted t))
-  (ad-activate 'flymake-post-syntax-check)
-  (setq flymake-allowed-file-name-masks
-        (append flymake-allowed-file-name-masks flymake-allowed-js-file-name-masks))
-  (setq flymake-err-line-patterns flymake-js-err-line-patterns)
-  (flymake-mode t))
-(add-hook 'javascript-mode-hook 'flymake-js-load)
