@@ -1,6 +1,6 @@
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-08-03 14:53:40 pcurry>
+;; Time-stamp: <2018-08-03 15:12:08 pcurry>
 
 ;;; Description: Configuration for many different modes.
 ;; Note that hooks can only contain function names not function calls.
@@ -61,11 +61,16 @@
 (defun my-python-mode-hook ()
   (if (srequire 'subword) (subword-mode 1))
   (when (srequire 'flyspell) (flyspell-prog-mode))
-  (when (and (srequire 'flymake)
-             (exec-in-path-p "pylint"))
-    (flymake-mode 1)
-    (define-key python-mode-map "\C-cn" 'flymake-goto-next-error)
-    (define-key python-mode-map "\C-cp" 'flymake-goto-prev-error)))
+  (cond ((srequire 'flycheck)
+         (flycheck-mode 1)
+         (define-key flycheck-mode-map "\C-cn" 'flycheck-next-error)
+         (define-key flycheck-mode-map "\C-cp" 'flycheck-previous-error)
+         (setq flycheck-python-pylint-executable "python3"))
+        ((and (srequire 'flymake)
+              (exec-in-path-p "pylint"))
+         (flymake-mode 1)
+         (define-key flymake-mode-map "\C-cn" 'flymake-goto-next-error)
+         (define-key flymake-mode-map "\C-cp" 'flymake-goto-prev-error))))
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
 
