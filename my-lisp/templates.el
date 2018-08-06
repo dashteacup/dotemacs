@@ -1,7 +1,7 @@
 ;; templates.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2009-07-07 13:55:37 pcurry>
+;; Time-stamp: <2018-08-06 13:38:37 pcurry>
 
 ;;; Description: Skeletons and related functions for auto-insert.
 
@@ -17,8 +17,13 @@
 (defun my-source-header ()
   "Return header string for a source file."
   (concat "Author: " (user-full-name) "\n"
-          "Created: " (format-time-string "%Y-%m-%d") "\n"
+          "Created: " (format-time-string "%Y-%m-%d") "\n"))
+
+(defun my-source-header-timestamp ()
+  "Return source file header string with an Emacs time-stamp tag."
+  (concat (my-source-header)
           "Time-stamp: <>\n"))
+
 
 (defvar copyright-organization (user-full-name)
   "Organization who holds copyright on the files with auto-inserted
@@ -134,7 +139,7 @@ that comment at the the beginning of every line."
 
         (("\\.el\\'" . "Emacs Lisp source")
          nil
-         (prepend-comment ";; " (my-source-header)) \n
+         (prepend-comment ";; " (my-source-header-timestamp)) \n
          ";;; Description: \n\n" )
 
         (("\\.tex\\'" . "Latex source")
