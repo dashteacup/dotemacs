@@ -1,7 +1,7 @@
 ;; templates.el
 ;; Author: Paul Curry
 ;; Created: 2006-10-27
-;; Time-stamp: <2018-08-06 13:38:37 pcurry>
+;; Time-stamp: <2018-08-06 14:19:13 pcurry>
 
 ;;; Description: Skeletons and related functions for auto-insert.
 
@@ -111,8 +111,8 @@ that comment at the the beginning of every line."
 
         ((python-mode . "Python program")
          nil
-         (if (y-or-n-p "Insert \"#!/usr/bin/env python\" ")
-             "#!/usr/bin/env python\n\n")
+         (if (y-or-n-p "Insert \"#!/usr/bin/env python3\" ")
+             "#!/usr/bin/env python3\n\n")
          (prepend-comment "# " (my-source-header)) \n \n)
 
         (("\\.\\(pl\\|pm\\)\\'" . "Perl program")
