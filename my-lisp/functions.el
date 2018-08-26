@@ -1,7 +1,7 @@
 ;; functions.el
 ;; Author: Paul Curry
 ;; Created: 2006-12-09
-;; Time-stamp: <2018-07-31 17:28:26 pcurry>
+;; Time-stamp: <2018-08-26 15:47:03 pcurry>
 
 ;;; Description: Helper function definitions.
 
@@ -137,53 +137,6 @@ doesn't refresh the frame when you switch"
   (setq ad-return-value (expand-file-name (file-name-nondirectory ad-return-value)
                                           temporary-file-directory)))
 ;;; end swipe
-
-;; Make * and # behave like they do vim (underscore and hyphen are part of a
-;; single word)
-(defadvice evil-search-word-forward (around underscore-as-word activate)
-  (let ((table (copy-syntax-table (syntax-table))))
-    (modify-syntax-entry ?_ "w" table)
-    (modify-syntax-entry ?- "w" table)
-    (with-syntax-table table
-      ad-do-it)))
-
-(defadvice evil-search-word-backward (around underscore-as-word activate)
-  (let ((table (copy-syntax-table (syntax-table))))
-    (modify-syntax-entry ?_ "w" table)
-    (modify-syntax-entry ?- "w" table)
-    (with-syntax-table table
-      ad-do-it)))
-
-;; Make underscore and hypen recognizable as part of words with / and ?
-(defadvice evil-search-forward (around underscore-as-word activate)
-  (let ((table (copy-syntax-table (syntax-table))))
-    (modify-syntax-entry ?_ "w" table)
-    (modify-syntax-entry ?- "w" table)
-    (with-syntax-table table
-      ad-do-it)))
-
-(defadvice evil-search-backward (around underscore-as-word activate)
-  (let ((table (copy-syntax-table (syntax-table))))
-    (modify-syntax-entry ?_ "w" table)
-    (modify-syntax-entry ?- "w" table)
-    (with-syntax-table table
-      ad-do-it)))
-
-;; After using * or # you need to treat underscore and hyphen as part of a
-;; word for n and N to work properly.
-(defadvice evil-search-next (around underscore-as-word activate)
-  (let ((table (copy-syntax-table (syntax-table))))
-    (modify-syntax-entry ?_ "w" table)
-    (modify-syntax-entry ?- "w" table)
-    (with-syntax-table table
-      ad-do-it)))
-
-(defadvice evil-search-previous (around underscore-as-word activate)
-  (let ((table (copy-syntax-table (syntax-table))))
-    (modify-syntax-entry ?_ "w" table)
-    (modify-syntax-entry ?- "w" table)
-    (with-syntax-table table
-      ad-do-it)))
 
 ;;; Commented out because I've been using a single space between sentences
 ;;; lately.
